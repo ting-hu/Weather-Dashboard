@@ -1,7 +1,26 @@
-var defaultCity = function () {
+$(document).ready(function () {
   var apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+  defaultCity(apiUrl);
+});
 
+$(".search-btn").on("click", function (event) {
+  event.preventDefault();
+  var userInput = $(".search-input").val();
+  if (userInput === "") {
+    var apiUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+  } else {
+    var apiUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      userInput +
+      "&appid=99dc7628aa4e751e74c77818315ae595";
+  }
+
+  defaultCity(apiUrl);
+});
+
+var defaultCity = function (apiUrl) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
@@ -63,5 +82,3 @@ var getUVIndex = function (lat, lon) {
     }
   });
 };
-
-defaultCity();
