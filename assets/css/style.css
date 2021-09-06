@@ -1,0 +1,21 @@
+.container {
+  padding-top: 50px;
+}
+
+.current-day {
+  margin-left: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.current-info {
+  margin: 10px;
+}
+
+.badge-high {
+  background-color: orange;
+}
+
+.badge-extreme {
+  background-color: darkviolet;
+}

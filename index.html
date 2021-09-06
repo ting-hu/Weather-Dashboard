@@ -13,16 +13,70 @@
   </head>
 
   <body>
-    <div class="jumbotron text-white bg-primary">
-      <h1 class="display-4 text center">Weather Dashboard</h1>
+    <div class="card-body text-center text-white bg-primary">
+      <h1>Weather Dashboard</h1>
     </div>
 
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <h4>Search for a city</h4>
+            <div class="col-md-12">
+                <h3>Search for a city: </h3>
+                <input
+                    class="form-control search-input input-lg"
+                    type="search"
+                    placeholder="Paris"
+                    aria-label="Paris"
+                />
+                <button
+                    class="btn my-1 btn-block bg-primary text-white"
+                    class="search-btn"
+                    type="submit"
+                >
+                Search
+                </button>
+            </div>
+
+            <div class="card">
+                <ul class="list-group search-history"></ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+          <div class="card">
+            <div class="row">
+              <div class="col-lg-4">
+                <h4 class="current-day"></h4>
+              </div>
+
+              <div class="col-lg-6">
+                <img class="current-icon" src=""></img>
+              </div>
+            </div>
+            <p class="card-text">
+                <h6 class="current-info">Temperature: <span class="currentTemp"></span></h6>
+                <h6 class="current-info">Humidity: <span class="currentHumidity"></span></h6>
+                <h6 class="current-info">Wind Speed: <span class="currentWindSpeed"></span></h6>
+                <h6 class="current-info">UV Index: <span class="currentUV badge"></span></h6>
+            </p>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-12">
+              </br>
+                  <h5>5-Day Forecast:</h5>
+                  <div class="row">
+                      <div class="col fiveDay"></div>
+                  </div>
+              </div>
+
+          </div>
         </div>
       </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
