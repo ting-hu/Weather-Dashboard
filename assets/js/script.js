@@ -90,6 +90,7 @@ var displayForecast = function (city) {
     "&appid=99dc7628aa4e751e74c77818315ae595";
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
+      storeLocal(city);
       response.json().then(function (data) {
         for (let i = 1; i < 6; i++) {
           var tempF = (
@@ -114,7 +115,7 @@ var displayForecast = function (city) {
 };
 
 var storeLocal = function (userInput) {
-  localStorage.setItem("record", JSON.stringify(cityName));
+  localStorage.setItem("record", JSON.stringify(userInput));
   var liEl = $(
     `<button type='button' class='list-group-item list-group-item-action' id='${userInput}'>${userInput}</li>`
   );
@@ -123,16 +124,9 @@ var storeLocal = function (userInput) {
 
 var displaySearchHistory = function (cityName) {
   for (let i = 0; i < localStorage.length; i++) {
-    console.log(cityName);
     var liEl = $(
       `<button type='button' class='list-group-item list-group-item-action' id='${cityName}'>${cityName}</li>`
     );
     liEl.appendTo(".search-history");
   }
-  /*cities.forEach(function (city) {
-    var liEl = $(
-      `<button type='button' class='list-group-item list-group-item-action' id='${city}'>${city}</li>`
-    );
-    liEl.appendTo(".search-history");
-  });*/
 };
