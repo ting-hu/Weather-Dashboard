@@ -35,11 +35,11 @@ var defaultCity = function (apiUrl) {
 
 var displayCurrentCity = function (data) {
   var tempF = (((data.main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
-  var iconInfo = data.weather[0].icon;
+
   $(".current-day").text(data.name + " (" + moment().format("MM/D/YYYY") + ")");
   $(".current-icon").attr(
     "src",
-    "https://openweathermap.org/img/wn/" + iconInfo + ".png"
+    "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
   );
   $(".currentTemp").text(tempF + " °F");
   $(".currentHumidity").text(data.main.humidity);
@@ -91,20 +91,18 @@ var displayForecast = function (city) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(data);
         for (let i = 1; i < 6; i++) {
-          var forecastDay = moment(data.list[i].dt_tx).format("MM/D/YYYY");
-
-          var iconInfo = data.list[i].weather[0].icon;
           var tempF = (
             ((data.list[i].main.temp - 273.15) * 9) / 5 +
             32
           ).toFixed(2);
 
-          $(".forecastDay" + i).text(forecastDay);
+          $(".forecastDay" + i).text(moment().add(i, "d").format("MM/D/YYYY"));
           $(".current-icon" + i).attr(
             "src",
-            "https://openweathermap.org/img/wn/" + iconInfo + ".png"
+            "https://openweathermap.org/img/wn/" +
+              data.list[i].weather[0].icon +
+              ".png"
           );
           $(".forecastTemp" + i).text(tempF + " °F");
           $(".forecastWind" + i).text(" " + data.list[i].wind.speed);
@@ -113,4 +111,28 @@ var displayForecast = function (city) {
       });
     }
   });
+};
+
+var storeLocal = function (userInput) {
+  localStorage.setItem("record", JSON.stringify(cityName));
+  var liEl = $(
+    `<button type='button' class='list-group-item list-group-item-action' id='${userInput}'>${userInput}</li>`
+  );
+  liEl.appendTo(".search-history");
+};
+
+var displaySearchHistory = function (cityName) {
+  for (let i = 0; i < localStorage.length; i++) {
+    console.log(cityName);
+    var liEl = $(
+      `<button type='button' class='list-group-item list-group-item-action' id='${cityName}'>${cityName}</li>`
+    );
+    liEl.appendTo(".search-history");
+  }
+  /*cities.forEach(function (city) {
+    var liEl = $(
+      `<button type='button' class='list-group-item list-group-item-action' id='${city}'>${city}</li>`
+    );
+    liEl.appendTo(".search-history");
+  });*/
 };
