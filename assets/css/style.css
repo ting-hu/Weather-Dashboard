@@ -2,6 +2,10 @@
   padding-top: 50px;
 }
 
+.search-section {
+  margin-left: -70px;
+}
+
 .current-day {
   margin-left: 10px;
   margin-top: 15px;
