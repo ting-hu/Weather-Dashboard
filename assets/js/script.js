@@ -20,6 +20,20 @@ $(".search-btn").on("click", function (event) {
   defaultCity(apiUrl);
 });
 
+var getUrl = function (cityName) {
+  if (cityName === "") {
+    var apiUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+  } else {
+    var apiUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      cityName +
+      "&appid=99dc7628aa4e751e74c77818315ae595";
+  }
+
+  defaultCity(apiUrl);
+};
+
 var defaultCity = function (apiUrl) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -116,10 +130,16 @@ var displayForecast = function (city) {
 
 var storeLocal = function (userInput) {
   localStorage.setItem("record", JSON.stringify(userInput));
-  var liEl = $(
-    `<button type='button' class='list-group-item list-group-item-action' id='${userInput}'>${userInput}</li>`
-  );
-  liEl.appendTo(".search-history");
+  var liEl = document.createElement("li");
+  liEl.classList.add("list-group-item", "list-group-item-action");
+  liEl.id = userInput;
+  liEl.textContent = userInput;
+  liEl.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+      getUrl(e.target.textContent);
+    }
+  });
+  document.querySelector(".search-history").appendChild(liEl);
 };
 
 var displaySearchHistory = function (cityName) {
