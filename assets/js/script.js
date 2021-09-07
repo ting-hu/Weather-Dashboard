@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var apiUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+    "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
   defaultCity(apiUrl);
 });
 
@@ -9,12 +9,12 @@ $(".search-btn").on("click", function (event) {
   var userInput = $(".search-input").val();
   if (userInput === "") {
     var apiUrl =
-      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
   } else {
     var apiUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       userInput +
-      "&appid=99dc7628aa4e751e74c77818315ae595";
+      "&appid=818154f9875973e95a27ec8b0fc7191b";
   }
 
   defaultCity(apiUrl);
@@ -23,12 +23,12 @@ $(".search-btn").on("click", function (event) {
 var getUrl = function (cityName) {
   if (cityName === "") {
     var apiUrl =
-      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=99dc7628aa4e751e74c77818315ae595";
+      "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
   } else {
     var apiUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityName +
-      "&appid=99dc7628aa4e751e74c77818315ae595";
+      "&appid=818154f9875973e95a27ec8b0fc7191b";
   }
 
   defaultCity(apiUrl);
@@ -68,7 +68,7 @@ var getUVIndex = function (lat, lon) {
     lat +
     "&lon=" +
     lon +
-    "&appid=99dc7628aa4e751e74c77818315ae595";
+    "&appid=818154f9875973e95a27ec8b0fc7191b";
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
@@ -101,7 +101,7 @@ var displayForecast = function (city) {
   var apiUrl =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
-    "&appid=99dc7628aa4e751e74c77818315ae595";
+    "&appid=818154f9875973e95a27ec8b0fc7191b";
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       storeLocal(city);
