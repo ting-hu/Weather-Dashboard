@@ -1,3 +1,7 @@
+*{
+  color: white;
+}
+
 .container {
   padding-top: 50px;
 }
@@ -12,14 +16,44 @@
   font-weight: bold;
 }
 
+#navGradient {
+  background-image: linear-gradient(
+    to right,
+    rgb(107, 21, 204),
+    rgb(156, 43, 122)
+  );
+}
+
 .current-info {
   margin: 10px;
+}
+.badge-sucess{
+  background-color: green;
+}
+
+.badge-warning{
+  background-color: rgb(209, 198, 35);
 }
 
 .badge-high {
   background-color: orange;
 }
 
+.badge-danger{
+  background-color: red;
+}
+
 .badge-extreme {
   background-color: darkviolet;
+}
+
+.card-img{
+  max-height: 250px;;
+}
+
+.current-icon{
+  max-height: 30px;
+  min-height: 30px;
+  max-width: 50px;
+  margin-bottom: 10px;
 }
