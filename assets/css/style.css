@@ -2,6 +2,14 @@
   color: white;
 }
 
+body {
+  background-color: #ffe8d6;
+}
+
+.font {
+  color: #cb997e;
+}
+
 .container {
   padding-top: 50px;
 }
@@ -17,11 +25,7 @@
 }
 
 #navGradient {
-  background-image: linear-gradient(
-    to right,
-    rgb(30, 81, 190),
-    rgb(11, 36, 53)
-  );
+  background-image: linear-gradient(to right, #b7b7a4, #6b705c);
 }
 
 .current-info {
