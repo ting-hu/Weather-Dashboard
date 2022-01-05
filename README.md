@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-A weather forecast website for our CS2430 class.
+A 5-day weather forecast website.
 
 ## INFORMATION:
 
